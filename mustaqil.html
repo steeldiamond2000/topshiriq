@@ -1,129 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mustaqil ishlar | Asaloy Galereya</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mustaqil ishlarim</title>
   <style>
+    :root {
+      --bg: #f0f0f0;
+      --text: #222;
+      --accent: #0078d7;
+    }
+    .dark {
+      --bg: #121212;
+      --text: #f5f5f5;
+      --accent: #339cff;
+    }
     body {
+      font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #baf3fc, #b6f7d6);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: linear-gradient(90deg, #007bff, #00cc99);
-      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 25px 0 15px;
-      font-size: 36px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      position: relative;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
     }
-
-    .btn {
-      position: absolute;
-      left: 20px;
-      top: 25px;
-      background: white;
-      color: #007bff;
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 15px;
       border: none;
-      padding: 10px 18px;
       border-radius: 8px;
+      background-color: var(--accent);
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
       transition: 0.3s;
     }
-
-    .btn:hover {
-      background: #e6f5ff;
-      transform: scale(1.05);
+    button:hover {
+      background-color: #005ea8;
     }
-
+    h1 {
+      margin: 15px 0;
+    }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      padding: 40px;
-      flex: 1;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      padding: 10px;
     }
-
     .gallery img {
       width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     .gallery img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
     }
-
+    #fullscreen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 100;
+    }
+    #fullscreen img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    #backBtn {
+      margin-top: 20px;
+      padding: 10px 18px;
+      font-size: 16px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #backBtn:hover {
+      background-color: #005ea8;
+    }
     footer {
-      text-align: center;
-      padding: 18px;
-      background: #f1fdf3;
-      color: #006644;
-      font-size: 15px;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 1024px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .btn{left:16px}
-    }
-
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-      .btn{left:12px; top:18px; padding:8px 12px}
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <header>
-    Mustaqil ishlar
-    <button class="btn" onclick="window.location.href='index.html'">← Asosiy sahifaga</button>
-  </header>
+  <div class="top-bar">
+    <button onclick="window.location.href='index.html'">🏠 Asosiy sahifa</button>
+    <button onclick="toggleMode()">🌙 / ☀️ Rejim</button>
+  </div>
 
-  <main class="gallery">
-    <img src="mus1.jpg" alt="Mustaqil 1">
-    <img src="mus2.jpg" alt="Mustaqil 2">
-    <img src="mus3.jpg" alt="Mustaqil 3">
-    <img src="mus4.jpg" alt="Mustaqil 4">
-    <img src="mus5.jpg" alt="Mustaqil 5">
-    <img src="mus6.jpg" alt="Mustaqil 6">
-    <img src="mus7.jpg" alt="Mustaqil 7">
-    <img src="mus8.jpg" alt="Mustaqil 8">
-    <img src="mus9.jpg" alt="Mustaqil 9">
-    <img src="mus10.jpg" alt="Mustaqil 10">
-    <img src="mus11.jpg" alt="Mustaqil 11">
-    <img src="mus12.jpg" alt="Mustaqil 12">
-    <img src="mus13.jpg" alt="Mustaqil 13">
-    <img src="mus14.jpg" alt="Mustaqil 14">
-    <img src="mus15.jpg" alt="Mustaqil 15">
-    <img src="mus16.jpg" alt="Mustaqil 16">
-    <img src="mus17.jpg" alt="Mustaqil 17">
-    <img src="mus18.jpg" alt="Mustaqil 18">
-    <img src="mus19.jpg" alt="Mustaqil 19">
-  </main>
+  <h1>📚 Mustaqil ishlar galereyasi</h1>
+  <p>Bu bo‘limda barcha mustaqil ishlaringiz rasmlari jamlangan. </p>
 
-  <footer>© 2025 Asaloy Galereya | Mansurbek Qazaqov tomonidan</footer>
+  <div class="gallery" id="gallery"></div>
+
+  <div id="fullscreen">
+    <img id="fullImg" src="" alt="Katta rasm">
+    <button id="backBtn" onclick="closeFull()">Orqaga</button>
+  </div>
+
+  <footer>© 2025 Qurbonboyeva Asaloy — Mustaqil ishlar galereyasi</footer>
+
+  <script>
+    // Rasmlar avtomatik yuklanadi
+    const gallery = document.getElementById('gallery');
+    for (let i = 1; i <= 19; i++) {
+      const img = document.createElement('img');
+      img.src = `mus${i}.jpg`;
+      img.alt = `Mustaqil ish ${i}`;
+      img.onclick = () => openFull(img.src);
+      gallery.appendChild(img);
+    }
+
+    // Lightbox funksiyasi
+    function openFull(src) {
+      const fullImg = document.getElementById('fullImg');
+      fullImg.src = src;
+      document.getElementById('fullscreen').style.display = 'flex';
+    }
+
+    function closeFull() {
+      document.getElementById('fullscreen').style.display = 'none';
+    }
+
+    // Rejimni o‘zgartirish (kunduz/tun)
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 </body>
 </html>
