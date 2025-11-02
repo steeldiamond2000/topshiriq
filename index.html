@@ -167,6 +167,36 @@
       }
       .btn, .theme-toggle { padding: 8px 12px; top: 15px; }
     }
+      .download-btn {
+  position: absolute;
+  right: 200px; /* "Kirish ball" tugmasidan oldin chiqadi */
+  top: 20px;
+  background: white;
+  color: #007bff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.download-btn:hover {
+  background: #e6f5ff;
+  transform: scale(1.05);
+}
+
+/* Tungi rejimga moslashtirish */
+body.dark .download-btn {
+  background: #333;
+  color: #00cc88;
+}
+
+body.dark .download-btn:hover {
+  background: #444;
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body>
@@ -176,9 +206,11 @@
   <button class="btn" onclick="window.location.href='mustaqil.html'">Mustaqil ishlar</button>
   <button class="btn" onclick="window.location.href='kirish.html'">Kirish ball</button>
 
-  <!-- 📦 Yuklash tugmasi -->
+  <!-- 📦 ZIP yuklash tugmasi -->
   <a href="https://drive.google.com/uc?export=download&id=1qxuNyAd8eQlca9lSoBJPg-e9dZ8aG4HV"
-     class="download-btn" download>📦 Yuklash</a>
+     class="download-btn" download>
+     📦 Yuklash
+  </a>
 </header>
 
 

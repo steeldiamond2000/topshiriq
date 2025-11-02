@@ -6,8 +6,8 @@
   <title>Kirish ball</title>
   <style>
     :root {
-      --light-bg: linear-gradient(135deg, #a8e6cf, #74b9ff);
-      --dark-bg: linear-gradient(135deg, #2d3436, #1e272e);
+      --light-bg: linear-gradient(135deg, #b2f7ef, #a0e9ff);
+      --dark-bg: linear-gradient(135deg, #1e272e, #2f3640);
       --light-text: #003366;
       --dark-text: #ecf0f1;
       --btn-bg: #0984e3;
@@ -16,21 +16,24 @@
 
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       font-family: Arial, sans-serif;
       background: var(--light-bg);
       color: var(--light-text);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow-y: auto;
       transition: background 0.4s ease, color 0.4s ease;
+      padding-top: 100px;
     }
 
     header {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 30px;
+      z-index: 10;
     }
 
     header button {
@@ -43,6 +46,7 @@
       font-size: 16px;
       font-weight: bold;
       transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     }
 
     header button:hover {
@@ -52,18 +56,22 @@
 
     h1 {
       font-size: 48px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      margin-top: 20px;
       font-weight: bold;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
       text-align: center;
     }
 
     img {
-      width: 65%;
-      max-width: 720px;
+      width: 90%;
+      max-width: 850px;
+      max-height: 80vh;
+      object-fit: contain;
       border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      margin-top: 20px;
+      transition: transform 0.4s ease;
     }
 
     img:hover {
@@ -71,14 +79,15 @@
     }
 
     a {
-      margin-top: 30px;
+      margin-top: 40px;
       text-decoration: none;
       background: var(--btn-bg);
       color: white;
-      padding: 12px 28px;
+      padding: 14px 30px;
       border-radius: 10px;
       font-size: 18px;
       transition: 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     }
 
     a:hover {
