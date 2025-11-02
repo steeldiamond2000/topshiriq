@@ -3,50 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Asaloy Galereya</title>
+  <title>Asaloyning Universitetdagi rasmlari</title>
   <style>
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:#f8f9fa;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #c9f7f5, #d4f5c5);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    header{
-      background:#007bff;
-      color:white;
-      text-align:center;
-      padding:30px 0;
-      font-size:36px;
-      font-weight:bold;
-      letter-spacing:1px;
+
+    header {
+      background: linear-gradient(90deg, #00aaff, #00cc88);
+      color: white;
+      text-align: center;
+      padding: 35px 0;
+      font-size: 38px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     }
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap:15px;
-      padding:20px;
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 40px;
+      flex: 1;
     }
-    .gallery img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-      border-radius:8px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.15);
-      transition:transform 0.3s ease;
+
+    .gallery img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .gallery img:hover{
-      transform:scale(1.05);
+
+    .gallery img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
-    footer{
-      text-align:center;
-      padding:15px;
-      background:#f1f1f1;
-      color:#333;
-      font-size:14px;
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: #f1fdf3;
+      color: #006644;
+      font-size: 15px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 1024px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Asaloy Galereya</header>
+  <header>Asaloy Galereyasi</header>
 
   <main class="gallery">
     <img src="rasm1.jpg" alt="Rasm 1">
