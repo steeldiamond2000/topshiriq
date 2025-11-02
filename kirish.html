@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kirish ball</title>
+  <style>
+    :root {
+      --light-bg: linear-gradient(135deg, #a8e6cf, #74b9ff);
+      --dark-bg: linear-gradient(135deg, #2d3436, #1e272e);
+      --light-text: #003366;
+      --dark-text: #ecf0f1;
+      --btn-bg: #0984e3;
+      --btn-hover: #74b9ff;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    header button {
+      background: #00b894;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header button:hover {
+      background: #55efc4;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    img {
+      width: 65%;
+      max-width: 720px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    a {
+      margin-top: 30px;
+      text-decoration: none;
+      background: var(--btn-bg);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      background: var(--btn-hover);
+      transform: scale(1.05);
+    }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    body.dark-mode a {
+      background: #6c5ce7;
+    }
+
+    body.dark-mode a:hover {
+      background: #a29bfe;
+    }
+
+    body.dark-mode header button {
+      background: #6c5ce7;
+    }
+
+    body.dark-mode header button:hover {
+      background: #a29bfe;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button onclick="toggleMode()">🌞 / 🌙 Rejim</button>
+  </header>
+
+  <h1>Kirish ball</h1>
+  <img src="kirish.jpg" alt="Kirish ball rasmi">
+  <a href="index.html">← Asosiy sahifaga qaytish</a>
+
+  <script>
+    const body = document.body;
+    function toggleMode() {
+      body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
+    }
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark-mode");
+    }
+  </script>
+</body>
+</html>
