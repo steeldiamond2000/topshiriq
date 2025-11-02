@@ -10,8 +10,8 @@
       --dark-bg: linear-gradient(135deg, #1e272e, #2f3640);
       --light-text: #003366;
       --dark-text: #ecf0f1;
-      --btn-bg: #0984e3;
-      --btn-hover: #74b9ff;
+      --btn-bg: linear-gradient(45deg, #00b894, #0984e3);
+      --btn-hover: linear-gradient(45deg, #55efc4, #74b9ff);
     }
 
     body {
@@ -24,20 +24,39 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      overflow-y: auto;
       transition: background 0.4s ease, color 0.4s ease;
-      padding-top: 100px;
+      padding-top: 120px;
     }
 
+    /* Ustki menyu */
     header {
       position: fixed;
-      top: 20px;
-      right: 30px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #00b894, #0984e3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       z-index: 10;
     }
 
-    header button {
-      background: #00b894;
+    header h2 {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .menu-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu-buttons button,
+    .menu-buttons a {
+      background: var(--btn-bg);
       border: none;
       color: white;
       padding: 10px 20px;
@@ -45,19 +64,20 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
+      text-decoration: none;
       transition: 0.3s;
       box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     }
 
-    header button:hover {
-      background: #55efc4;
+    .menu-buttons button:hover,
+    .menu-buttons a:hover {
+      background: var(--btn-hover);
       transform: scale(1.05);
     }
 
     h1 {
       font-size: 48px;
-      margin-bottom: 40px;
-      margin-top: 20px;
+      margin: 40px 0 30px;
       font-weight: bold;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
       text-align: center;
@@ -70,7 +90,7 @@
       object-fit: contain;
       border-radius: 15px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      margin-top: 20px;
+      margin-top: 10px;
       transition: transform 0.4s ease;
     }
 
@@ -78,54 +98,27 @@
       transform: scale(1.03);
     }
 
-    a {
-      margin-top: 40px;
-      text-decoration: none;
-      background: var(--btn-bg);
-      color: white;
-      padding: 14px 30px;
-      border-radius: 10px;
-      font-size: 18px;
-      transition: 0.3s ease;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
-
-    a:hover {
-      background: var(--btn-hover);
-      transform: scale(1.05);
-    }
-
     body.dark-mode {
       background: var(--dark-bg);
       color: var(--dark-text);
     }
 
-    body.dark-mode a {
-      background: #6c5ce7;
-    }
-
-    body.dark-mode a:hover {
-      background: #a29bfe;
-    }
-
-    body.dark-mode header button {
-      background: #6c5ce7;
-    }
-
-    body.dark-mode header button:hover {
-      background: #a29bfe;
+    body.dark-mode header {
+      background: linear-gradient(90deg, #00b894, #0984e3);
     }
   </style>
 </head>
 <body>
   <header>
-    <button onclick="toggleMode()">🌞 / 🌙 Rejim</button>
-      <a href="index.html">← Asosiy sahifaga qaytish</a>
+    <h2>Kirish ball sahifasi</h2>
+    <div class="menu-buttons">
+      <button onclick="toggleMode()">🌞 / 🌙 Rejim</button>
+      <a href="index.html">← Asosiy sahifaga</a>
+    </div>
   </header>
 
   <h1>Kirish ball</h1>
   <img src="kirish.jpg" alt="Kirish ball rasmi">
-
 
   <script>
     const body = document.body;
