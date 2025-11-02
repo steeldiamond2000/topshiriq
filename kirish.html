@@ -10,8 +10,7 @@
       --dark-bg: linear-gradient(135deg, #1e272e, #2f3640);
       --light-text: #003366;
       --dark-text: #ecf0f1;
-      --btn-bg: linear-gradient(45deg, #00b894, #0984e3);
-      --btn-hover: linear-gradient(45deg, #55efc4, #74b9ff);
+      --blue: #0984e3;
     }
 
     body {
@@ -38,27 +37,31 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
+      padding: 15px 25px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       z-index: 10;
+      box-sizing: border-box;
     }
 
     header h2 {
       color: white;
       font-size: 20px;
       font-weight: bold;
+      margin: 0;
     }
 
     .menu-buttons {
       display: flex;
       gap: 15px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .menu-buttons button,
     .menu-buttons a {
-      background: var(--btn-bg);
-      border: none;
-      color: white;
+      background: white;
+      border: 2px solid var(--blue);
+      color: var(--blue);
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
@@ -66,12 +69,13 @@
       font-weight: bold;
       text-decoration: none;
       transition: 0.3s;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .menu-buttons button:hover,
     .menu-buttons a:hover {
-      background: var(--btn-hover);
+      background: var(--blue);
+      color: white;
       transform: scale(1.05);
     }
 
@@ -104,7 +108,32 @@
     }
 
     body.dark-mode header {
-      background: linear-gradient(90deg, #00b894, #0984e3);
+      background: #000;
+    }
+
+    body.dark-mode .menu-buttons button,
+    body.dark-mode .menu-buttons a {
+      background: #111;
+      color: white;
+      border: 2px solid #555;
+    }
+
+    body.dark-mode .menu-buttons button:hover,
+    body.dark-mode .menu-buttons a:hover {
+      background: #333;
+      color: #74b9ff;
+    }
+
+    @media (max-width: 600px) {
+      .menu-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -112,7 +141,7 @@
   <header>
     <h2>Kirish ball sahifasi</h2>
     <div class="menu-buttons">
-      <button onclick="toggleMode()">🌞 / 🌙 Rejim</button>
+      <button onclick="toggleMode()"> 🌞 / 🌙 </button>
       <a href="index.html">← Asosiy sahifaga</a>
     </div>
   </header>
