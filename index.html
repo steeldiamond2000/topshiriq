@@ -5,213 +5,182 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title> Asaloyning Universitetdagi rasmlari </title>
   <style>
-    :root {
-      --bg-light: linear-gradient(135deg, #c9f7f5, #d4f5c5);
-      --bg-dark: linear-gradient(135deg, #1a1a1a, #333);
-      --text-light: #222;
-      --text-dark: #f1f1f1;
-      --header-light: linear-gradient(90deg, #00aaff, #00cc88);
-      --header-dark: linear-gradient(90deg, #444, #111);
-    }
+  :root {
+    --bg-light: linear-gradient(135deg, #c9f7f5, #d4f5c5);
+    --bg-dark: linear-gradient(135deg, #1a1a1a, #333);
+    --text-light: #222;
+    --text-dark: #f1f1f1;
+    --header-light: linear-gradient(90deg, #00aaff, #00cc88);
+    --header-dark: linear-gradient(90deg, #444, #111);
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
-      transition: background 0.5s, color 0.5s;
-    }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.5s, color 0.5s;
+  }
 
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
 
+  header {
+    background: var(--header-light);
+    color: white;
+    padding: 20px 40px;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: background 0.5s;
+  }
+
+  body.dark header {
+    background: var(--header-dark);
+  }
+
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Tugmalar uchun umumiy uslub */
+  .header-buttons button,
+  .header-buttons a {
+    background: white;
+    color: #007bff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .header-buttons button:hover,
+  .header-buttons a:hover {
+    background: #e6f5ff;
+    transform: scale(1.05);
+  }
+
+  body.dark .header-buttons button,
+  body.dark .header-buttons a {
+    background: #333;
+    color: #00cc88;
+  }
+
+  body.dark .header-buttons button:hover,
+  body.dark .header-buttons a:hover {
+    background: #444;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  footer {
+    text-align: center;
+    padding: 18px;
+    background: #f1fdf3;
+    color: #006644;
+    font-size: 15px;
+  }
+
+  /* Lightbox modal */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .close-btn {
+    margin-top: 20px;
+    background: #00cc88;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+
+  .close-btn:hover {
+    background: #00aa77;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
     header {
-      background: var(--header-light);
-      color: white;
-      text-align: center;
-      padding: 25px 0;
-      font-size: 36px;
-      font-weight: bold;
-      position: relative;
-      transition: background 0.5s;
-    }
-
-    body.dark header {
-      background: var(--header-dark);
-    }
-
-    .btn {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      background: white;
-      color: #007bff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #e6f5ff;
-      transform: scale(1.05);
-    }
-
-    .theme-toggle {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      background: white;
-      color: #007bff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: #e6f5ff;
-      transform: scale(1.05);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      padding: 40px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    footer {
-      text-align: center;
-      padding: 18px;
-      background: #f1fdf3;
-      color: #006644;
-      font-size: 15px;
-    }
-
-    /* Lightbox modal */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
+      text-align: center;
     }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    .header-buttons {
+      flex-wrap: wrap;
+      justify-content: center;
     }
+  }
+</style>
 
-    .close-btn {
-      margin-top: 20px;
-      background: #00cc88;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .close-btn:hover {
-      background: #00aa77;
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 1024px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-      .btn, .theme-toggle { padding: 8px 12px; top: 15px; }
-    }
-      .download-btn {
-  position: absolute;
-  right: 200px; /* "Kirish ball" tugmasidan oldin chiqadi */
-  top: 20px;
-  background: white;
-  color: #007bff;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.download-btn:hover {
-  background: #e6f5ff;
-  transform: scale(1.05);
-}
-
-/* Tungi rejimga moslashtirish */
-body.dark .download-btn {
-  background: #333;
-  color: #00cc88;
-}
-
-body.dark .download-btn:hover {
-  background: #444;
-  transform: scale(1.05);
-}
-
-  </style>
-</head>
 <body>
-<header>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</button>
-  Asaloyning Universitetdagi rasmlari
-  <button class="btn" onclick="window.location.href='mustaqil.html'">Mustaqil ishlar</button>
-  <button class="btn" onclick="window.location.href='kirish.html'">Kirish ball</button>
+  <header>
+    <span>Asaloyning Universitetdagi rasmlari</span>
+    <div class="header-buttons">
+      <button onclick="toggleTheme()">🌙 / ☀️</button>
+      <button onclick="window.location.href='kirish.html'">Kirish ball</button>
+      <button onclick="window.location.href='mustaqil.html'">Mustaqil ishlar</button>
+      <a href="https://drive.google.com/uc?export=download&id=1qxuNyAd8eQlca9lSoBJPg-e9dZ8aG4HV" download>📦 Yuklash</a>
+    </div>
+  </header>
+</body>
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+  }
+</script>
 
-  <!-- 📦 ZIP yuklash tugmasi -->
-  <a href="https://drive.google.com/uc?export=download&id=1qxuNyAd8eQlca9lSoBJPg-e9dZ8aG4HV"
-     class="download-btn" download>
-     📦 Yuklash
-  </a>
-</header>
 
 
   <main class="gallery">
